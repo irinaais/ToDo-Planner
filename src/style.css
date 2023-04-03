@@ -1,4 +1,10 @@
 @import url(./vendor/normalize.css);
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
 
+@import url(./blocks/page/page.css);
+@import url(./blocks/page/__section/page__section.css);
+
+@import url(./blocks/header/__text/header__text.css);
+
+@import url(./blocks/form/__text/form__text.css);

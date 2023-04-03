@@ -1,0 +1,6 @@
+.page {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: Nunito, Arial, sans-serif;
+    text-align: center;
+}
