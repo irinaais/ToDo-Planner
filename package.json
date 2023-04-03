@@ -1,0 +1,29 @@
+{
+  "name": "todo-planner",
+  "version": "1.0.0",
+  "description": "todo-planner",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irinaais/todo.git"
+  },
+  "keywords": [
+    "todo",
+    "todo-planner",
+    "planner"
+  ],
+  "author": "Ирина Осипова",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irinaais/todo/issues"
+  },
+  "homepage": "https://github.com/irinaais/todo#readme",
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}
