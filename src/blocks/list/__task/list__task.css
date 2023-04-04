@@ -1,0 +1,5 @@
+.list__task {
+    display: flex;
+    height: 30px;
+    margin: 0 0 10px;
+}

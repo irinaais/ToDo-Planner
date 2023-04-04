@@ -5,4 +5,9 @@
     background-position: center;
     border-radius: 10px;
     border: none;
+    padding: 0;
+}
+
+.button:hover {
+    opacity: .7;
 }

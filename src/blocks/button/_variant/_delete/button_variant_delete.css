@@ -1,0 +1,7 @@
+.button_variant_delete {
+    background-image: url(../../../../images/delete.svg);
+    background-size: 22px;
+    width: 70px;
+    margin-left: auto;
+    margin-right: 0;
+}

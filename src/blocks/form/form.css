@@ -2,4 +2,5 @@
     margin: 20px auto;
     display: flex;
     justify-content: space-between;
+    height: 50px;
 }
