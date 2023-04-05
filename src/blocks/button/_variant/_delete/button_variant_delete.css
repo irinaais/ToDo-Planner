@@ -1,8 +1,15 @@
 .button_variant_delete {
     background-image: url(../../../../images/delete.svg);
-    background-size: 22px;
+    background-size: 20px;
     width: 70px;
     margin-left: auto;
     margin-right: 0;
     background-color: transparent;
+    display: none;
+    /*line-height: 20px;*/
+    height: 30px;
 }
+
+/*.button_variant_delete:hover {*/
+/*    display: block;*/
+/*}*/
