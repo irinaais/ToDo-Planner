@@ -1,0 +1,9 @@
+.list__checkbox-input {
+    display: none;
+}
+
+.list__checkbox-input:checked+div {
+    background-image: url("../../../images/done-green.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
