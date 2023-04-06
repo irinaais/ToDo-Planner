@@ -18,5 +18,5 @@
 @import url(./blocks/list/__task/list__task.css);
 @import url(./blocks/list/__label/list__label.css);
 @import url(./blocks/list/__checkbox-input/list__checkbox-input.css);
-@import url(./blocks/list/__checkbox-div/list__checkbox-div.css);
+@import url(blocks/list/__checkbox-toggle/list__checkbox-toggle.css);
 @import url(./blocks/list/__task-text/list__task-text.css);
