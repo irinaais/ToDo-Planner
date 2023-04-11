@@ -2,12 +2,6 @@
     display: none;
 }
 
-/*.list__checkbox-input:checked+span {*/
-/*    background-image: url("../../../images/done-green.svg");*/
-/*    background-repeat: no-repeat;*/
-/*    background-position: center;*/
-/*}*/
-
 .list__checkbox-input:checked + span::after {
     display: block;
 }
