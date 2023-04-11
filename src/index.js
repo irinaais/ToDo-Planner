@@ -14,13 +14,14 @@ const newTaskInput = document.querySelector('.form__text');
 const allTasks = [];
 
 function checkForDuplicate(inputValue) {
-  let isDuplicate = false;
-  allTasks.forEach((task) => {
-    if (task.inputValue === inputValue) {
-      alert('Такая задача уже существует');
-      isDuplicate = true;
-    }
+  const isDuplicate = allTasks.some(task => {
+    return task.inputValue === inputValue;
   });
+
+  if (isDuplicate) {
+    alert('Такая задача уже существует');
+  }
+
   return isDuplicate;
 }
 
@@ -29,10 +30,6 @@ function deleteInputValue() {
 }
 
 function addNewTask(inputValue) {
-  if (checkForDuplicate(inputValue)) {
-    return;
-  }
-
   const id = allTasks.length + 1;
   const task = {
     id,
@@ -44,7 +41,7 @@ function addNewTask(inputValue) {
 }
 
 addButton.addEventListener('click', () => {
-  if (newTaskInput.value) {
+  if (newTaskInput.value && !checkForDuplicate(newTaskInput.value)) {
     addNewTask(newTaskInput.value);
   }
 });
