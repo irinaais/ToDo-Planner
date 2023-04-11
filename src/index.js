@@ -1,15 +1,6 @@
-// function showTasks() {
-//   let storageSize = localStorage.length;
-//   if (storageSize > 0) {
-//     for (let i = 0; i < storageSize; i++) {
-//       let key = localStorage.key(i);
-//       if ()
-//     }
-//   }
-// }
-
 const addButton = document.querySelector('.button_variant_add');
 const newTaskInput = document.querySelector('.form__text');
+const listOfTasks = document.querySelector('.list');
 
 const allTasks = [];
 
@@ -39,9 +30,37 @@ function addNewTask(inputValue) {
   allTasks.push(task);
 }
 
+function renderAllTask(tasks) {
+  let htmlList = '';
+
+  tasks.forEach(task => {
+    const taskClass = task.isDone
+      ? 'list__task list__task_completed'
+      : 'list__task';
+
+    const isChecked = task.isDone ? 'checked' : '';
+
+    const htmlTask = `
+      <div class="${taskClass}" id = "${task.id}">
+        <label class="list__label">
+            <input class="list__checkbox-input" type="checkbox" ${isChecked}>
+            <span class="list__checkbox-toggle"></span>
+        </label>
+        <div class="list__task-text">${task.inputValue}</div>
+        <button class="button button_variant_delete" type="button" aria-label="Удалить задачу"></button>
+      </div>
+    `
+
+    htmlList = htmlList + htmlTask;
+  })
+
+  listOfTasks.innerHTML = htmlList;
+}
+
 addButton.addEventListener('click', () => {
   if (newTaskInput.value && !checkForDuplicate(newTaskInput.value)) {
     addNewTask(newTaskInput.value);
     deleteInputValue();
+    renderAllTask(allTasks);
   }
 });
