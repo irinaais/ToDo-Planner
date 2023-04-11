@@ -37,11 +37,11 @@ function addNewTask(inputValue) {
     isDone: false
   }
   allTasks.push(task);
-  deleteInputValue();
 }
 
 addButton.addEventListener('click', () => {
   if (newTaskInput.value && !checkForDuplicate(newTaskInput.value)) {
     addNewTask(newTaskInput.value);
+    deleteInputValue();
   }
 });
