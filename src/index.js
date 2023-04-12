@@ -2,7 +2,7 @@ const addButton = document.querySelector('.button_variant_add');
 const newTaskInput = document.querySelector('.form__text');
 const listOfTasks = document.querySelector('.list');
 
-const allTasks = [];
+let allTasks = [];
 
 function checkForDuplicate(inputValue) {
   const isDuplicate = allTasks.some(task => {
@@ -64,6 +64,13 @@ function changeTaskStatus(id, status, tasks) {
   task.isDone = !task.isDone;
 }
 
+function deleteTask(id, tasks) {
+  const arr = tasks.filter(function (task) {
+    return task.id !== id;
+  })
+  allTasks = arr;
+}
+
 addButton.addEventListener('click', () => {
   if (newTaskInput.value && !checkForDuplicate(newTaskInput.value)) {
     addNewTask(newTaskInput.value);
@@ -74,11 +81,21 @@ addButton.addEventListener('click', () => {
 
 listOfTasks.addEventListener('click', (evt) => {
   const target = evt.target;
-  const toggle = target.classList.contains('list__checkbox-toggle');
-  if (toggle) {
-    const isInputChecked = !target.previousElementSibling.checked;
-    const task = target.parentElement.parentElement;
+
+  const checkbox = target.classList.contains('list__checkbox-toggle');
+  const deleteButton = target.classList.contains('button_variant_delete');
+
+  if (checkbox) {
+    const isInputChecked = !evt.target.previousElementSibling.checked;
+    const task = evt.target.parentElement.parentElement;
+
     changeTaskStatus(task.id, isInputChecked, allTasks)
+    renderAllTask(allTasks);
+
+  } else if (deleteButton) {
+    const task = evt.target.parentElement;
+
+    deleteTask(task.id, allTasks);
     renderAllTask(allTasks);
   }
 })
