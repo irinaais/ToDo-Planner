@@ -57,6 +57,13 @@ function renderAllTask(tasks) {
   listOfTasks.innerHTML = htmlList;
 }
 
+function changeTaskStatus(id, status, tasks) {
+  const task = tasks.find(function (task) {
+    return task.id === Number(id);
+  })
+  task.isDone = !task.isDone;
+}
+
 addButton.addEventListener('click', () => {
   if (newTaskInput.value && !checkForDuplicate(newTaskInput.value)) {
     addNewTask(newTaskInput.value);
@@ -64,3 +71,14 @@ addButton.addEventListener('click', () => {
     renderAllTask(allTasks);
   }
 });
+
+listOfTasks.addEventListener('click', (evt) => {
+  const target = evt.target;
+  const toggle = target.classList.contains('list__checkbox-toggle');
+  if (toggle) {
+    const isInputChecked = !target.previousElementSibling.checked;
+    const task = target.parentElement.parentElement;
+    changeTaskStatus(task.id, isInputChecked, allTasks)
+    renderAllTask(allTasks);
+  }
+})
