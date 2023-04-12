@@ -21,7 +21,7 @@ function deleteInputValue() {
 }
 
 function addNewTask(inputValue) {
-  const id = allTasks.length + 1;
+  const id = inputValue;
   const task = {
     id,
     inputValue,
@@ -59,7 +59,7 @@ function renderAllTask(tasks) {
 
 function changeTaskStatus(id, status, tasks) {
   const task = tasks.find(function (task) {
-    return task.id === Number(id);
+    return task.id === id;
   })
   task.isDone = !task.isDone;
 }
