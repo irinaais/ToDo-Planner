@@ -1,6 +1,7 @@
 const addButton = document.querySelector('.button_variant_add');
 const newTaskInput = document.querySelector('.form__text');
 const listOfTasks = document.querySelector('.list');
+const form = document.querySelector('.form');
 
 let allTasks = [];
 
@@ -76,6 +77,15 @@ addButton.addEventListener('click', () => {
   }
 });
 
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  if (newTaskInput.value && !checkForDuplicate(newTaskInput.value)) {
+    addNewTask(newTaskInput.value);
+    deleteInputValue();
+    renderAllTask(allTasks);
+  }
+});
+
 listOfTasks.addEventListener('click', (evt) => {
   const target = evt.target;
 
@@ -95,4 +105,4 @@ listOfTasks.addEventListener('click', (evt) => {
     deleteTask(task.id, allTasks);
     renderAllTask(allTasks);
   }
-})
+});
