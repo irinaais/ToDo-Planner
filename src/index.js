@@ -5,6 +5,11 @@ const form = document.querySelector('.form');
 
 let allTasks = [];
 
+if (localStorage.getItem('allTasks')) {
+  allTasks = JSON.parse(localStorage.getItem('allTasks'));
+  renderAllTask(allTasks);
+}
+
 function checkForDuplicate(inputValue) {
   const isDuplicate = allTasks.some(task => {
     return task.inputValue === inputValue;
@@ -77,6 +82,7 @@ function addNewTaskAndRenderAllTasks() {
     addNewTask(newTaskInput.value);
     deleteInputValue();
     renderAllTask(allTasks);
+    localStorage.setItem('allTasks', JSON.stringify(allTasks));
   }
 }
 
