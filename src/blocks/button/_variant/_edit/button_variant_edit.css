@@ -1,5 +1,5 @@
-.button_variant_delete {
-    background-image: url(../../../../images/delete.svg);
+.button_variant_edit {
+    background-image: url(../../../../images/edit.svg);
     background-size: 20px;
     width: 35px;
     background-color: transparent;

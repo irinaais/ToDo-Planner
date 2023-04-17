@@ -13,3 +13,7 @@
 .list__task:hover .button_variant_delete{
     display: block;
 }
+
+.list__task:hover .button_variant_edit{
+    display: block;
+}

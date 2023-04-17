@@ -48,6 +48,7 @@ function renderAllTask(tasks) {
             <span class="list__checkbox-toggle"></span>
         </label>
         <div class="list__task-text">${task.inputValue}</div>
+        <button class="button button_variant_edit" type="button" aria-label="Редактировать задачу"></button>
         <button class="button button_variant_delete" type="button" aria-label="Удалить задачу"></button>
       </div>
     `

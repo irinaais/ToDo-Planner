@@ -1,3 +1,5 @@
 .list__task-text {
     cursor: default;
+    flex-grow: 1;
+    text-align: left;
 }

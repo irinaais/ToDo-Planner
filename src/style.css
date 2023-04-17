@@ -13,6 +13,7 @@
 @import url(./blocks/button/button.css);
 @import url(./blocks/button/_variant/_add/button_variant_add.css);
 @import url(./blocks/button/_variant/_delete/button_variant_delete.css);
+@import url(./blocks/button/_variant/_edit/button_variant_edit.css);
 
 @import url(./blocks/list/list.css);
 @import url(./blocks/list/__task/list__task.css);
