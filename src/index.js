@@ -67,7 +67,9 @@ function changeTaskStatus(id, status, tasks) {
 }
 
 function deleteTask(id, tasks) {
-  tasks.splice(id, 1);
+  allTasks = tasks.filter(function (task) {
+    return task.id !== id;
+  });
 }
 
 addButton.addEventListener('click', () => {
