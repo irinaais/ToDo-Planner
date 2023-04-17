@@ -72,21 +72,21 @@ function deleteTask(id, tasks) {
   });
 }
 
-addButton.addEventListener('click', () => {
+function addNewTaskAndRenderAllTasks() {
   if (newTaskInput.value && !checkForDuplicate(newTaskInput.value)) {
     addNewTask(newTaskInput.value);
     deleteInputValue();
     renderAllTask(allTasks);
   }
+}
+
+addButton.addEventListener('click', () => {
+  addNewTaskAndRenderAllTasks();
 });
 
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  if (newTaskInput.value && !checkForDuplicate(newTaskInput.value)) {
-    addNewTask(newTaskInput.value);
-    deleteInputValue();
-    renderAllTask(allTasks);
-  }
+  addNewTaskAndRenderAllTasks();
 });
 
 listOfTasks.addEventListener('click', (evt) => {
