@@ -76,6 +76,7 @@ function deleteTask(id, tasks) {
   allTasks = tasks.filter(function (task) {
     return task.id !== id;
   });
+  localStorage.setItem('allTasks', JSON.stringify(allTasks));
 }
 
 function addNewTaskAndRenderAllTasks() {
