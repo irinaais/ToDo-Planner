@@ -69,6 +69,7 @@ function changeTaskStatus(id, status, tasks) {
     return task.id === id;
   })
   task.isDone = !task.isDone;
+  localStorage.setItem('allTasks', JSON.stringify(allTasks));
 }
 
 function deleteTask(id, tasks) {
