@@ -1,4 +1,10 @@
 .page__section {
-    width: 600px;
+    max-width: 600px;
     margin: auto;
+}
+
+@media screen and (max-width: 630px) {
+    .page__section {
+        max-width: 80%;
+    }
 }
