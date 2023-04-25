@@ -42,23 +42,21 @@ function renderAllTask(tasks) {
   for (const task of tasks) {
     const templateItem = template.content.cloneNode(true);
     const li = templateItem.querySelector('li');
-    // const input = templateItem.querySelector('.list__checkbox-input');
     const p = templateItem.querySelector('.list__task-text');
-    // if (task.isDone) li.classList.add('list__task_completed') && input.setAttribute('checked', 'true');
-    // input.checked = task.isDone;
+    if (task.isDone) li.classList.add('list__task_completed');
     li.id = task.id;
     p.textContent = task.inputValue;
     listOfTasks.append(templateItem);
   }
 }
 
-// function changeTaskStatus(id, status, tasks) {
-//   const task = tasks.find(function (task) {
-//     return task.id === id;
-//   })
-//   task.isDone = !task.isDone;
-//   localStorage.setItem('allTasks', JSON.stringify(allTasks));
-// }
+function changeTaskStatus(id, status, tasks) {
+  const task = tasks.find(function (task) {
+    return task.id === id;
+  })
+  task.isDone = !task.isDone;
+  localStorage.setItem('allTasks', JSON.stringify(allTasks));
+}
 
 function deleteTask(id, tasks) {
   allTasks = tasks.filter(function (task) {
@@ -89,24 +87,17 @@ form.addEventListener('submit', (evt) => {
 listOfTasks.addEventListener('click', (evt) => {
   const target = evt.target;
 
-  // const checkbox = target.classList.contains('list__checkbox-toggle');
+  const checkbox = target.classList.contains('list__checkbox-toggle');
   const deleteButton = target.classList.contains('button_variant_delete');
 
-  // if (checkbox) {
-  //   const isInputChecked = !evt.target.previousElementSibling.checked;
-  //   const task = evt.target.parentElement.parentElement;
-  //
-  //   changeTaskStatus(task.id, isInputChecked, allTasks)
-  //   renderAllTask(allTasks);
-  //
-  // } else if (deleteButton) {
-  //   const task = evt.target.parentElement;
-  //
-  //   deleteTask(task.id, allTasks);
-  //   renderAllTask(allTasks);
-  // }
+  if (checkbox) {
+    const isInputChecked = !evt.target.previousElementSibling.checked;
+    const task = evt.target.parentElement.parentElement;
 
-  if (deleteButton) {
+    changeTaskStatus(task.id, isInputChecked, allTasks)
+    renderAllTask(allTasks);
+
+  } else if (deleteButton) {
     const task = evt.target.parentElement;
 
     deleteTask(task.id, allTasks);

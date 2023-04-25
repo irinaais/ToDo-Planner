@@ -1,7 +1,3 @@
 .list__checkbox-input {
     display: none;
 }
-
-.list__checkbox-input:checked + span::after {
-    display: block;
-}
