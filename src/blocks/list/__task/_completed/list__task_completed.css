@@ -1,4 +1,9 @@
-.list__task_completed .list__task-text {
-    text-decoration: line-through;
-    color: #eee;
-}
+/*.list__task_completed .list__task-text {*/
+/*    text-decoration: line-through;*/
+/*    color: #eee;*/
+/*}*/
+
+/*.list__task_completed {*/
+/*    text-decoration: line-through;*/
+/*    color: #eee;*/
+/*}*/

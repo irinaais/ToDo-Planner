@@ -24,11 +24,23 @@
       <button class="button button_variant_add" type="button" aria-label="Добавить задачу"></button>
     </form>
 
-    <div class="list">
+    <ul class="list"></ul>
 
-    </div>
   </main>
 </div>
+
+<template id="template">
+  <li class="list__task">
+    <label class="list__label">
+      <input class="list__checkbox-input" type="checkbox">
+      <span class="list__checkbox-toggle"></span>
+    </label>
+    <p class="list__task-text"></p>
+    <button class="button button_variant_edit" type="button" aria-label="Редактировать задачу"></button>
+    <button class="button button_variant_delete" type="button" aria-label="Удалить задачу"></button>
+  </li>
+</template>
+
 <script src="index.js"></script>
 </body>
 </html>
