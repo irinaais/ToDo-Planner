@@ -60,12 +60,12 @@ function renderAllTask(tasks) {
 //   localStorage.setItem('allTasks', JSON.stringify(allTasks));
 // }
 
-// function deleteTask(id, tasks) {
-//   allTasks = tasks.filter(function (task) {
-//     return task.id !== id;
-//   });
-//   localStorage.setItem('allTasks', JSON.stringify(allTasks));
-// }
+function deleteTask(id, tasks) {
+  allTasks = tasks.filter(function (task) {
+    return task.id !== id;
+  });
+  localStorage.setItem('allTasks', JSON.stringify(allTasks));
+}
 
 function addNewTaskAndRenderAllTasks() {
   if (newTaskInput.value && !checkForDuplicate(newTaskInput.value)) {
@@ -86,23 +86,30 @@ form.addEventListener('submit', (evt) => {
   addNewTaskAndRenderAllTasks();
 });
 
-// listOfTasks.addEventListener('click', (evt) => {
-//   const target = evt.target;
-//
-//   const checkbox = target.classList.contains('list__checkbox-toggle');
-//   const deleteButton = target.classList.contains('button_variant_delete');
-//
-//   if (checkbox) {
-//     const isInputChecked = !evt.target.previousElementSibling.checked;
-//     const task = evt.target.parentElement.parentElement;
-//
-//     changeTaskStatus(task.id, isInputChecked, allTasks)
-//     renderAllTask(allTasks);
-//
-//   } else if (deleteButton) {
-//     const task = evt.target.parentElement;
-//
-//     deleteTask(task.id, allTasks);
-//     renderAllTask(allTasks);
-//   }
-// });
+listOfTasks.addEventListener('click', (evt) => {
+  const target = evt.target;
+
+  // const checkbox = target.classList.contains('list__checkbox-toggle');
+  const deleteButton = target.classList.contains('button_variant_delete');
+
+  // if (checkbox) {
+  //   const isInputChecked = !evt.target.previousElementSibling.checked;
+  //   const task = evt.target.parentElement.parentElement;
+  //
+  //   changeTaskStatus(task.id, isInputChecked, allTasks)
+  //   renderAllTask(allTasks);
+  //
+  // } else if (deleteButton) {
+  //   const task = evt.target.parentElement;
+  //
+  //   deleteTask(task.id, allTasks);
+  //   renderAllTask(allTasks);
+  // }
+
+  if (deleteButton) {
+    const task = evt.target.parentElement;
+
+    deleteTask(task.id, allTasks);
+    renderAllTask(allTasks);
+  }
+});
