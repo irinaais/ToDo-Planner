@@ -1,0 +1,10 @@
+.list__task-input {
+    display: inline-block;
+    border: 1px solid #eee;
+    padding: 5px 10px;
+    font-size: 14px;
+    /*width: 100%;*/
+    border-radius: 10px;
+    flex-grow: 1;
+    margin-right: 10px;
+}

@@ -71,7 +71,6 @@ function addNewTaskAndRenderAllTasks() {
     localStorage.setItem('allTasks', JSON.stringify(allTasks));
     deleteInputValue();
     renderAllTask(allTasks);
-    console.log(allTasks);
   }
 }
 
@@ -89,18 +88,29 @@ listOfTasks.addEventListener('click', (evt) => {
 
   const checkbox = target.classList.contains('list__checkbox-toggle');
   const deleteButton = target.classList.contains('button_variant_delete');
+  const editButton = target.classList.contains('button_variant_edit');
 
   if (checkbox) {
-    const isInputChecked = !evt.target.previousElementSibling.checked;
-    const task = evt.target.parentElement.parentElement;
-
+    const isInputChecked = !evt.target.previousElementSibling.checked; //TODO заменить evt.target на target?
+    const task = evt.target.parentElement.parentElement; //TODO заменить evt.target на target?
     changeTaskStatus(task.id, isInputChecked, allTasks)
     renderAllTask(allTasks);
 
   } else if (deleteButton) {
-    const task = evt.target.parentElement;
-
+    const task = evt.target.parentElement; //TODO заменить evt.target на target?
     deleteTask(task.id, allTasks);
     renderAllTask(allTasks);
+
+  } else if (editButton) { //TODO вынести в отдельную функцию
+    const li = target.parentElement;
+    const p = target.previousElementSibling;
+    const input = document.createElement('input');
+    const deleteButton = target.nextElementSibling;
+    input.classList.add('list__task-input');
+    li.replaceChild(input, p);
+    target.classList.remove('button_variant_edit');
+    target.classList.add('button_variant_confirm');
+    target.classList.add('button_visible');
+    deleteButton.classList.add('button_visible');
   }
 });

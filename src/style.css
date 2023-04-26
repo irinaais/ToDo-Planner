@@ -14,11 +14,14 @@
 @import url(./blocks/button/_variant/_add/button_variant_add.css);
 @import url(./blocks/button/_variant/_delete/button_variant_delete.css);
 @import url(./blocks/button/_variant/_edit/button_variant_edit.css);
+@import url(./blocks/button/_variant/_confirm/button_variant_confirm.css);
+@import url(./blocks/button/_visible/button_visible.css);
 
 @import url(./blocks/list/list.css);
 @import url(./blocks/list/__task/list__task.css);
 @import url(./blocks/list/__task/_completed/list__task_completed.css);
 @import url(./blocks/list/__label/list__label.css);
 @import url(./blocks/list/__checkbox-input/list__checkbox-input.css);
-@import url(blocks/list/__checkbox-toggle/list__checkbox-toggle.css);
+@import url(./blocks/list/__checkbox-toggle/list__checkbox-toggle.css);
 @import url(./blocks/list/__task-text/list__task-text.css);
+@import url(./blocks/list/__task-input/list__task-input.css);

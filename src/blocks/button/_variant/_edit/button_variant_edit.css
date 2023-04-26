@@ -1,8 +1,9 @@
 .button_variant_edit {
     background-image: url(../../../../images/edit.svg);
     background-size: 20px;
-    width: 35px;
+    width: 25px;
     background-color: transparent;
     display: none;
     height: 30px;
+    margin-right: 6px;
 }
