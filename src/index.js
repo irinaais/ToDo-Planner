@@ -11,6 +11,10 @@ if (localStorage.getItem('allTasks')) {
   renderAllTask(allTasks);
 }
 
+function saveAllTaskInLocalStorage() {
+  localStorage.setItem('allTasks', JSON.stringify(allTasks));
+}
+
 function checkForDuplicate(inputValue) {
   const isDuplicate = allTasks.some(task => {
     return task.inputValue === inputValue;
@@ -59,27 +63,27 @@ function findTaskById(tasks, id) {
 function changeTaskStatus(id, status, tasks) {
   const task = findTaskById(tasks, id);
   task.isDone = !task.isDone;
-  localStorage.setItem('allTasks', JSON.stringify(allTasks));
+  saveAllTaskInLocalStorage();
 }
 
 function changeTaskText(id, text, tasks) {
   const task = findTaskById(tasks, id);
   task.inputValue = text;
   task.id = text;
-  localStorage.setItem('allTasks', JSON.stringify(allTasks));
+  saveAllTaskInLocalStorage();
 }
 
 function deleteTask(id, tasks) {
   allTasks = tasks.filter(function (task) {
     return task.id !== id;
   });
-  localStorage.setItem('allTasks', JSON.stringify(allTasks));
+  saveAllTaskInLocalStorage();
 }
 
 function addNewTaskAndRenderAllTasks() {
   if (newTaskInput.value && !checkForDuplicate(newTaskInput.value)) {
     addNewTask(newTaskInput.value);
-    localStorage.setItem('allTasks', JSON.stringify(allTasks));
+    saveAllTaskInLocalStorage();
     deleteInputValue();
     renderAllTask(allTasks);
   }
