@@ -134,6 +134,6 @@ listOfTasks.addEventListener('click', (evt) => {
     const input = target.previousElementSibling;
     const task = target.parentElement;
     changeTaskText(task.id, input.value, allTasks);
-    renderAllTask(allTasks); //TODO убрать ф-ю? итак все работает
+    renderAllTask(allTasks);
   }
 });
