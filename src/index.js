@@ -97,7 +97,7 @@ listOfTasks.addEventListener('click', (evt) => {
     renderAllTask(allTasks);
 
   } else if (deleteButton) {
-    const task = evt.target.parentElement; //TODO заменить evt.target на target?
+    const task = target.parentElement;
     deleteTask(task.id, allTasks);
     renderAllTask(allTasks);
 
