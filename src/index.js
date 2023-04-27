@@ -91,8 +91,8 @@ listOfTasks.addEventListener('click', (evt) => {
   const editButton = target.classList.contains('button_variant_edit');
 
   if (checkbox) {
-    const isInputChecked = !evt.target.previousElementSibling.checked; //TODO заменить evt.target на target?
-    const task = evt.target.parentElement.parentElement; //TODO заменить evt.target на target?
+    const isInputChecked = !target.previousElementSibling.checked;
+    const task = target.parentElement.parentElement;
     changeTaskStatus(task.id, isInputChecked, allTasks)
     renderAllTask(allTasks);
 
