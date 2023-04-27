@@ -50,18 +50,20 @@ function renderAllTask(tasks) {
   }
 }
 
-function changeTaskStatus(id, status, tasks) {
-  const task = tasks.find(function (task) {
+function findTaskById(tasks, id) {
+  return tasks.find(function (task) {
     return task.id === id;
-  })
+  });
+}
+
+function changeTaskStatus(id, status, tasks) {
+  const task = findTaskById(tasks, id);
   task.isDone = !task.isDone;
   localStorage.setItem('allTasks', JSON.stringify(allTasks));
 }
 
 function changeTaskText(id, text, tasks) {
-  const task = tasks.find(function (task) { //TODO вынести в отдельную ф-ю и в changeTaskStatus тоже
-    return task.id === id;
-  })
+  const task = findTaskById(tasks, id);
   task.inputValue = text;
   task.id = text;
   localStorage.setItem('allTasks', JSON.stringify(allTasks));
