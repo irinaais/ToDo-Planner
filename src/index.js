@@ -130,6 +130,16 @@ listOfTasks.addEventListener('click', (evt) => {
     target.classList.add('button_visible');
     deleteButton.classList.add('button_visible');
 
+    const taskInput = document.querySelector('.list__task-input');
+    taskInput.addEventListener('keyup', (evt) => {
+      if (evt.keyCode === 13) {
+        const input = evt.target;
+        const task = evt.target.parentElement;
+        changeTaskText(task.id, input.value, allTasks);
+        renderAllTask(allTasks);
+      }
+    });
+
   } else if (confirmButton) {
     const input = target.previousElementSibling;
     const task = target.parentElement;
