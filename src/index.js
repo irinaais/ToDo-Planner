@@ -66,6 +66,31 @@ function changeTaskStatus(id, status, tasks) {
   saveAllTaskInLocalStorage();
 }
 
+function changeTask(p, li, editButton, deleteButton) {
+  const input = document.createElement('input');
+
+  input.classList.add('list__task-input');
+  input.value = p.innerText;
+  li.replaceChild(input, p);
+  editButton.classList.remove('button_variant_edit');
+  editButton.classList.add('button_variant_confirm');
+  editButton.classList.add('button_visible');
+  deleteButton.classList.add('button_visible');
+  input.focus();
+}
+
+function addEnterEventListener() {
+  const taskInput = document.querySelector('.list__task-input');
+  taskInput.addEventListener('keyup', (evt) => {
+    if (evt.keyCode === 13) {
+      const input = evt.target;
+      const task = evt.target.parentElement;
+      changeTaskText(task.id, input.value, allTasks);
+      renderAllTask(allTasks);
+    }
+  });
+}
+
 function changeTaskText(id, text, tasks) {
   const task = findTaskById(tasks, id);
   task.inputValue = text;
@@ -120,26 +145,10 @@ listOfTasks.addEventListener('click', (evt) => {
   } else if (editButton) {
     const li = target.parentElement;
     const p = target.previousElementSibling;
-    const input = document.createElement('input');
+    const editButton = target;
     const deleteButton = target.nextElementSibling;
-    input.classList.add('list__task-input');
-    input.value = p.innerText;
-    li.replaceChild(input, p);
-    target.classList.remove('button_variant_edit');
-    target.classList.add('button_variant_confirm');
-    target.classList.add('button_visible');
-    deleteButton.classList.add('button_visible');
-    input.focus();
-
-    const taskInput = document.querySelector('.list__task-input');
-    taskInput.addEventListener('keyup', (evt) => {
-      if (evt.keyCode === 13) {
-        const input = evt.target;
-        const task = evt.target.parentElement;
-        changeTaskText(task.id, input.value, allTasks);
-        renderAllTask(allTasks);
-      }
-    });
+    changeTask(p, li, editButton, deleteButton);
+    addEnterEventListener();
 
   } else if (confirmButton) {
     const input = target.previousElementSibling;
@@ -152,25 +161,8 @@ listOfTasks.addEventListener('click', (evt) => {
 listOfTasks.addEventListener('dblclick', (evt) => {
   const p = evt.target;
   const li = evt.target.parentElement;
-  const input = document.createElement('input');
   const editButton = evt.target.nextElementSibling;
   const deleteButton = evt.target.nextElementSibling.nextElementSibling;
-  input.classList.add('list__task-input');
-  input.value = p.innerText;
-  li.replaceChild(input, p);
-  editButton.classList.remove('button_variant_edit');
-  editButton.classList.add('button_variant_confirm');
-  editButton.classList.add('button_visible');
-  deleteButton.classList.add('button_visible');
-  input.focus();
-
-  const taskInput = document.querySelector('.list__task-input');
-  taskInput.addEventListener('keyup', (evt) => {
-    if (evt.keyCode === 13) {
-      const input = evt.target;
-      const task = evt.target.parentElement;
-      changeTaskText(task.id, input.value, allTasks);
-      renderAllTask(allTasks);
-    }
-  });
+  changeTask(p, li, editButton, deleteButton);
+  addEnterEventListener();
 })
