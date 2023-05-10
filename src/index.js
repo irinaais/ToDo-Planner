@@ -129,6 +129,7 @@ listOfTasks.addEventListener('click', (evt) => {
     target.classList.add('button_variant_confirm');
     target.classList.add('button_visible');
     deleteButton.classList.add('button_visible');
+    input.focus();
 
     const taskInput = document.querySelector('.list__task-input');
     taskInput.addEventListener('keyup', (evt) => {
@@ -147,3 +148,29 @@ listOfTasks.addEventListener('click', (evt) => {
     renderAllTask(allTasks);
   }
 });
+
+listOfTasks.addEventListener('dblclick', (evt) => {
+  const p = evt.target;
+  const li = evt.target.parentElement;
+  const input = document.createElement('input');
+  const editButton = evt.target.nextElementSibling;
+  const deleteButton = evt.target.nextElementSibling.nextElementSibling;
+  input.classList.add('list__task-input');
+  input.value = p.innerText;
+  li.replaceChild(input, p);
+  editButton.classList.remove('button_variant_edit');
+  editButton.classList.add('button_variant_confirm');
+  editButton.classList.add('button_visible');
+  deleteButton.classList.add('button_visible');
+  input.focus();
+
+  const taskInput = document.querySelector('.list__task-input');
+  taskInput.addEventListener('keyup', (evt) => {
+    if (evt.keyCode === 13) {
+      const input = evt.target;
+      const task = evt.target.parentElement;
+      changeTaskText(task.id, input.value, allTasks);
+      renderAllTask(allTasks);
+    }
+  });
+})
