@@ -1,9 +1,12 @@
 .list__task-input {
     display: inline-block;
-    border: 1px solid #eee;
-    padding: 5px 10px;
-    font-size: 14px;
-    border-radius: 10px;
+    border: 1px solid transparent;
+    font-size: 16px;
+    border-radius: 5px;
     flex-grow: 1;
     margin-right: 10px;
+}
+
+.list__task-input:focus {
+    outline: none;
 }

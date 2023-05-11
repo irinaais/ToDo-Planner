@@ -3,9 +3,5 @@
     flex-grow: 1;
     text-align: left;
     margin: 0;
+    padding-left: 3px;
 }
-
-/*.list__task-text .list__task_completed {*/
-/*    text-decoration: line-through;*/
-/*    color: #eee;*/
-/*}*/
