@@ -77,6 +77,7 @@ function changeTask(p, li, editButton, deleteButton) {
   editButton.classList.add('button_visible');
   deleteButton.classList.add('button_visible');
   input.focus();
+  li.classList.add('list__task_active');
 }
 
 function addEnterEventListener() {
