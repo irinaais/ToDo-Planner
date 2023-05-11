@@ -159,10 +159,14 @@ listOfTasks.addEventListener('click', (evt) => {
 });
 
 listOfTasks.addEventListener('dblclick', (evt) => {
-  const p = evt.target;
-  const li = evt.target.parentElement;
-  const editButton = evt.target.nextElementSibling;
-  const deleteButton = evt.target.nextElementSibling.nextElementSibling;
-  changeTask(p, li, editButton, deleteButton);
-  addEnterEventListener();
+  const taskText = evt.target.classList.contains('list__task-text');
+
+  if (taskText) {
+    const p = evt.target;
+    const li = evt.target.parentElement;
+    const editButton = evt.target.nextElementSibling;
+    const deleteButton = evt.target.nextElementSibling.nextElementSibling;
+    changeTask(p, li, editButton, deleteButton);
+    addEnterEventListener();
+  }
 })
