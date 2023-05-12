@@ -20,6 +20,7 @@
 @import url(./blocks/list/list.css);
 @import url(./blocks/list/__task/list__task.css);
 @import url(./blocks/list/__task/_completed/list__task_completed.css);
+@import url(./blocks/list/__task/_active/list__task_active.css);
 @import url(./blocks/list/__label/list__label.css);
 @import url(./blocks/list/__checkbox-input/list__checkbox-input.css);
 @import url(./blocks/list/__checkbox-toggle/list__checkbox-toggle.css);
