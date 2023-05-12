@@ -111,6 +111,8 @@ function addNewTaskAndRenderAllTasks() {
     saveAllTaskInLocalStorage();
     deleteInputValue();
     renderAllTask(allTasks);
+  } else if (!newTaskInput.value) {
+    alert('Введите текст задачи');
   }
 }
 
@@ -118,6 +120,8 @@ function changeTaskAndRenderAllTasks(input, task) {
   if (input.value && !checkForDuplicate(input.value)) {
     changeTaskText(task.id, input.value, allTasks);
     renderAllTask(allTasks);
+  } else if (!newTaskInput.value) {
+    alert('Введите текст задачи');
   }
 }
 
