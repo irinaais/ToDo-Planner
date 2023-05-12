@@ -86,8 +86,7 @@ function addEnterEventListener() {
     if (evt.keyCode === 13) {
       const input = evt.target;
       const task = evt.target.parentElement;
-      changeTaskText(task.id, input.value, allTasks);
-      renderAllTask(allTasks);
+      changeTaskAndRenderAllTasks(input, task);
     }
   });
 }
@@ -111,6 +110,13 @@ function addNewTaskAndRenderAllTasks() {
     addNewTask(newTaskInput.value);
     saveAllTaskInLocalStorage();
     deleteInputValue();
+    renderAllTask(allTasks);
+  }
+}
+
+function changeTaskAndRenderAllTasks(input, task) {
+  if (input.value && !checkForDuplicate(input.value)) {
+    changeTaskText(task.id, input.value, allTasks);
     renderAllTask(allTasks);
   }
 }
@@ -154,8 +160,7 @@ listOfTasks.addEventListener('click', (evt) => {
   } else if (confirmButton) {
     const input = target.previousElementSibling;
     const task = target.parentElement;
-    changeTaskText(task.id, input.value, allTasks);
-    renderAllTask(allTasks);
+    changeTaskAndRenderAllTasks(input, task);
   }
 });
 
