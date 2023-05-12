@@ -15,6 +15,7 @@
 @import url(./blocks/button/_variant/_delete/button_variant_delete.css);
 @import url(./blocks/button/_variant/_edit/button_variant_edit.css);
 @import url(./blocks/button/_variant/_confirm/button_variant_confirm.css);
+@import url(./blocks/button/_variant/_cancel/button_variant_cancel.css);
 @import url(./blocks/button/_visible/button_visible.css);
 
 @import url(./blocks/list/list.css);

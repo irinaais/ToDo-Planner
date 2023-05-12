@@ -75,6 +75,8 @@ function changeTask(p, li, editButton, deleteButton) {
   editButton.classList.remove('button_variant_edit');
   editButton.classList.add('button_variant_confirm');
   editButton.classList.add('button_visible');
+  deleteButton.classList.remove('button_variant_delete');
+  deleteButton.classList.add('button_variant_cancel');
   deleteButton.classList.add('button_visible');
   input.focus();
   li.classList.add('list__task_active');
@@ -141,6 +143,7 @@ listOfTasks.addEventListener('click', (evt) => {
   const deleteButton = target.classList.contains('button_variant_delete');
   const editButton = target.classList.contains('button_variant_edit');
   const confirmButton = target.classList.contains('button_variant_confirm');
+  const cancelButton = target.classList.contains('button_variant_cancel');
 
   if (checkbox) {
     const isInputChecked = !target.previousElementSibling.checked;
@@ -165,6 +168,9 @@ listOfTasks.addEventListener('click', (evt) => {
     const input = target.previousElementSibling;
     const task = target.parentElement;
     changeTaskAndRenderAllTasks(input, task);
+
+  } else if (cancelButton) {
+    renderAllTask(allTasks);
   }
 });
 
