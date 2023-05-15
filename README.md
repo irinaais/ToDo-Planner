@@ -23,6 +23,7 @@ ___
 * localStorage
 * template
 * uuid
+* async/await
 
 ## Статус разработки
 ___
