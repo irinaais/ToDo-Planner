@@ -27,6 +27,19 @@ async function readTasks() {
   return [];
 }
 
+function renderAllTask(tasks) {
+  listOfTasks.innerHTML = '';
+  for (const task of tasks) {
+    const templateItem = template.content.cloneNode(true);
+    const li = templateItem.querySelector('li');
+    const p = templateItem.querySelector('.list__task-text');
+    if (task.isDone) li.classList.add('list__task_completed');
+    li.id = task.id;
+    p.textContent = task.inputValue;
+    listOfTasks.append(templateItem);
+  }
+}
+
 function saveAllTaskInLocalStorage() {
   localStorage.setItem('allTasks', JSON.stringify(allTasks));
 }
@@ -61,19 +74,6 @@ function addNewTask(inputValue) {
     isDone: false
   }
   allTasks.push(task);
-}
-
-function renderAllTask(tasks) {
-  listOfTasks.innerHTML = '';
-  for (const task of tasks) {
-    const templateItem = template.content.cloneNode(true);
-    const li = templateItem.querySelector('li');
-    const p = templateItem.querySelector('.list__task-text');
-    if (task.isDone) li.classList.add('list__task_completed');
-    li.id = task.id;
-    p.textContent = task.inputValue;
-    listOfTasks.append(templateItem);
-  }
 }
 
 function findTaskById(tasks, id) {
