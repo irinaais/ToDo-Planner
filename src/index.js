@@ -6,9 +6,25 @@ const template = document.querySelector('#template');
 
 let allTasks = [];
 
-if (localStorage.getItem('allTasks')) {
-  allTasks = JSON.parse(localStorage.getItem('allTasks'));
-  renderAllTask(allTasks);
+(async () => {
+  allTasks = await readTasks();
+  if (allTasks.length > 0) {
+    renderAllTask(allTasks);
+  }
+})();
+
+async function readTasks() {
+  try {
+    let allTasks = localStorage.getItem('allTasks');
+    if (allTasks != null) {
+      return await JSON.parse(allTasks);
+    }
+
+  } catch (err) {
+    console.warn("Не удалось прочитать список задач", err);
+    localStorage.removeItem('allTasks');
+  }
+  return [];
 }
 
 function saveAllTaskInLocalStorage() {
