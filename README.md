@@ -22,6 +22,7 @@ ___
 * БЭМ
 * localStorage
 * template
+* uuid
 
 ## Статус разработки
 ___
