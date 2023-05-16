@@ -53,8 +53,7 @@ let allTasks;
       const p = target.previousElementSibling;
       const editButton = target;
       const deleteButton = target.nextElementSibling;
-      changeTask(p, li, editButton, deleteButton);
-      addEnterEventListener();
+      checkOpenInputAndChangeTask(p, li, editButton, deleteButton);
 
     } else if (confirmButton) {
       const input = target.previousElementSibling;
@@ -74,8 +73,7 @@ let allTasks;
       const li = evt.target.parentElement;
       const editButton = evt.target.nextElementSibling;
       const deleteButton = evt.target.nextElementSibling.nextElementSibling;
-      changeTask(p, li, editButton, deleteButton);
-      addEnterEventListener();
+      checkOpenInputAndChangeTask(p, li, editButton, deleteButton);
     }
   })
 })();
@@ -214,5 +212,33 @@ function changeTaskAndRenderAllTasks(input, task) {
     renderAllTask(allTasks);
   } else if (!input.value) {
     alert('Введите текст задачи');
+  }
+}
+
+function checkOpenInputAndChangeTask(p, li, editButton, deleteButton) {
+  const input = listOfTasks.querySelector('.list__task-input');
+
+  if (input) {
+    const pOfInput = document.createElement('p');
+    const liOfInput = input.parentElement;
+    const confirmButtonOfInput = input.nextElementSibling;
+    const cancelButtonOfInput = input.nextElementSibling.nextElementSibling;
+    const task = findTaskById(allTasks, liOfInput.id);
+    pOfInput.classList.add('list__task-text');
+    liOfInput.replaceChild(pOfInput, input);
+    pOfInput.textContent = task.inputValue;
+    confirmButtonOfInput.classList.remove('button_variant_confirm');
+    confirmButtonOfInput.classList.add('button_variant_edit');
+    confirmButtonOfInput.classList.remove('button_visible');
+    cancelButtonOfInput.classList.remove('button_variant_cancel');
+    cancelButtonOfInput.classList.add('button_variant_delete');
+    cancelButtonOfInput.classList.remove('button_visible');
+    liOfInput.classList.remove('list__task_active');
+    changeTask(p, li, editButton, deleteButton);
+    addEnterEventListener();
+
+  } else {
+    changeTask(p, li, editButton, deleteButton);
+    addEnterEventListener();
   }
 }
