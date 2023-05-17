@@ -1,6 +1,6 @@
 .list__task_active {
     border-radius: 10px;
-    box-shadow: 0 6px 10px #eee;
+    box-shadow: 0 8px 10px #eee;
     transition: box-shadow .4s ease, margin .3s ease;
-    margin: 3px 0;
+    margin: 7px 0;
 }

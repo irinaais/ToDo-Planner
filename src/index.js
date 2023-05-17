@@ -159,7 +159,7 @@ function changeTask(p, li, editButton, deleteButton) {
 
   input.classList.add('list__task-input');
   input.value = p.innerText;
-  input.setAttribute('maxlength', '53');
+  input.setAttribute('maxlength', '180');
   li.replaceChild(input, p);
   editButton.classList.remove('button_variant_edit');
   editButton.classList.add('button_variant_confirm');
