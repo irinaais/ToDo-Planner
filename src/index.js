@@ -201,6 +201,7 @@ function addNewTaskAndRenderAllTasks() {
     saveAllTaskInLocalStorage();
     deleteInputValue();
     renderAllTask(allTasks);
+    newTaskInput.focus();
   } else if (!newTaskInput.value) {
     alert('Введите текст задачи');
   }
