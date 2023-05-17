@@ -5,7 +5,7 @@
     transition: opacity .2s;
     margin: 0 0 3px;
     padding: 0 6px;
-    max-height: 60px;
+    max-height: 70px;
 }
 
 .list__task:hover {
@@ -27,6 +27,5 @@
 @media screen and (max-width: 630px) {
     .list__task {
         max-height: 90px;
-        justify-content: center;
     }
 }

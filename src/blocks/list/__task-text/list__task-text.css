@@ -4,12 +4,12 @@
     text-align: left;
     margin: 0;
     padding-left: 3px;
-    max-width: 495px;
+    max-width: 85%;
     overflow-wrap: anywhere;
 }
 
 @media screen and (max-width: 630px) {
     .list__task-text {
-        max-width: 295px;
+        max-width: 76%;
     }
 }
