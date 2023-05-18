@@ -1,3 +1,5 @@
+import './style.css';
+
 let addButton;
 let newTaskInput;
 let listOfTasks;
