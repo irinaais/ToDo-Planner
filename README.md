@@ -1,5 +1,5 @@
 # ToDo Planner
-________
+
 Приложение, позволяющее планировать список дел.
 
 ![screenshot](src/images/screenshot.png)
