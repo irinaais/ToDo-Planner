@@ -132,6 +132,13 @@ function uuidv4() {
   );
 }
 
+function checkForSpace(string) {
+  if (string === '' || string.trim() === '') {
+    alert('Введите текст задачи');
+    return true;
+  }
+}
+
 function addNewTask(inputValue) {
   const id = uuidv4();
   const task = {
@@ -196,7 +203,7 @@ function deleteTask(id, tasks) {
 }
 
 function addNewTaskAndRenderAllTasks() {
-  if (newTaskInput.value && !checkForDuplicate(newTaskInput.value)) {
+  if (newTaskInput.value && !checkForDuplicate(newTaskInput.value) && !checkForSpace(newTaskInput.value)) {
     addNewTask(newTaskInput.value);
     saveAllTaskInLocalStorage();
     deleteInputValue();
@@ -208,7 +215,7 @@ function addNewTaskAndRenderAllTasks() {
 }
 
 function changeTaskAndRenderAllTasks(input, task) {
-  if (input.value && !checkForDuplicate(input.value)) {
+  if (input.value && !checkForDuplicate(input.value) && !checkForSpace(input.value)) {
     changeTaskText(task.id, input.value, allTasks);
     renderAllTask(allTasks);
   } else if (!input.value) {
