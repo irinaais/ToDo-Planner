@@ -16,16 +16,19 @@
 - [ ] Тестирование
 - [ ] Регистрация и аутентификация
 
+## [Демо: https://irinaais.github.io/ToDo-Planner/](https://irinaais.github.io/ToDo-Planner/)
+
 ## Стек
 
 * Vanilla JS
 * БЭМ
-* localStorage
-* template
-* uuid
-* async/await
+* LocalStorage
+* Template
+* UUID
+* Async/await
+* Webpack
+* Babel (Core JS, preset-env)
 
 ## Статус разработки
-
 
 В разработке
