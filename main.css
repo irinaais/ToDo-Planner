@@ -14,7 +14,7 @@
 .button_visible{display:block}
 .list{margin:0;padding:0}
 .list__task{align-items:center;display:flex;margin:0 0 3px;max-height:70px;min-height:30px;padding:0 6px;transition:opacity .2s}.list__task:hover{opacity:.7}.list__task:last-of-type{margin-bottom:0}.list__task:hover .button_variant_delete,.list__task:hover .button_variant_edit{display:block}@media screen and (max-width:630px){.list__task{max-height:90px}}
-.list__task_completed .list__task-text{color:#eee;text-decoration:line-through}.list__task_completed span:after{display:block}
+.list__task_completed .list__task-text{color:grey;text-decoration:line-through}.list__task_completed span:after{display:block}
 .list__task_active{border-radius:10px;box-shadow:0 8px 10px #eee;margin:7px 0;transition:box-shadow .4s ease,margin .3s ease}
 
 .list__checkbox-input{display:none}
