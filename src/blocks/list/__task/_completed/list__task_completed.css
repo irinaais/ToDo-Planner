@@ -1,6 +1,6 @@
 .list__task_completed .list__task-text {
     text-decoration: line-through;
-    color: #eee;
+    color: #808080;
 }
 
 .list__task_completed span::after {
