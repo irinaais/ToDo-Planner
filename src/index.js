@@ -1,6 +1,6 @@
 import './style.css';
 
-let addButton;
+let addButton; //TODO нужно ли удалить тут объявление переменных, если сделать все функции чистыми
 let newTaskInput;
 let listOfTasks;
 let form;
@@ -16,7 +16,7 @@ let allTasks;
 
   allTasks = [];
 
-  allTasks = await readTasks();
+  allTasks = await readTasks(allTasks);
   if (allTasks.length > 0) {
     renderAllTask(allTasks);
   }
@@ -81,9 +81,9 @@ let allTasks;
 })();
 
 //=================================================================
-async function readTasks() {
+async function readTasks(allTasks) {
   try {
-    let allTasks = localStorage.getItem('allTasks');
+    allTasks = localStorage.getItem('allTasks');
     if (allTasks != null) {
       return await JSON.parse(allTasks);
     }
