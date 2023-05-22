@@ -233,10 +233,10 @@ function checkOpenInputAndChangeTask(p, li, editButton, deleteButton) {
     const liOfInput = input.parentElement;
     const confirmButtonOfInput = input.nextElementSibling;
     const cancelButtonOfInput = input.nextElementSibling.nextElementSibling;
-    const task = findTaskById(allTasks, liOfInput.id);
     pOfInput.classList.add('list__task-text');
     liOfInput.replaceChild(pOfInput, input);
-    pOfInput.textContent = task.inputValue;
+    pOfInput.textContent = input.value;
+    changeTaskText(liOfInput.id, input.value, allTasks);
     confirmButtonOfInput.classList.remove('button_variant_confirm');
     confirmButtonOfInput.classList.add('button_variant_edit');
     confirmButtonOfInput.classList.remove('button_visible');
