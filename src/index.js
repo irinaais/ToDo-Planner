@@ -18,7 +18,7 @@ let allTasks;
 
   allTasks = await readTasks(allTasks);
   if (allTasks.length > 0) {
-    renderAllTask(allTasks);
+    renderAllTask(allTasks, listOfTasks);
   }
 
   addButton.addEventListener('click', () => {
@@ -43,12 +43,12 @@ let allTasks;
       const isInputChecked = !target.previousElementSibling.checked;
       const task = target.parentElement.parentElement;
       changeTaskStatus(task.id, isInputChecked, allTasks)
-      renderAllTask(allTasks);
+      renderAllTask(allTasks, listOfTasks);
 
     } else if (deleteButton) {
       const task = target.parentElement;
       deleteTask(task.id, allTasks);
-      renderAllTask(allTasks);
+      renderAllTask(allTasks, listOfTasks);
 
     } else if (editButton) {
       const li = target.parentElement;
@@ -63,7 +63,7 @@ let allTasks;
       changeTaskAndRenderAllTasks(input, task);
 
     } else if (cancelButton) {
-      renderAllTask(allTasks);
+      renderAllTask(allTasks, listOfTasks);
     }
   });
 
@@ -95,9 +95,9 @@ async function readTasks(allTasks) {
   return [];
 }
 
-function renderAllTask(tasks) {
+function renderAllTask(allTasks, listOfTasks) {
   listOfTasks.innerHTML = '';
-  for (const task of tasks) {
+  for (const task of allTasks) {
     const templateItem = template.content.cloneNode(true);
     const li = templateItem.querySelector('li');
     const p = templateItem.querySelector('.list__task-text');
@@ -197,7 +197,7 @@ function addNewTaskAndRenderAllTasks() {
     addNewTask(newTaskInput.value);
     saveAllTaskInLocalStorage();
     deleteInputValue();
-    renderAllTask(allTasks);
+    renderAllTask(allTasks, listOfTasks);
     newTaskInput.focus();
   } else if (!newTaskInput.value) {
     alert('Введите текст задачи');
@@ -207,7 +207,7 @@ function addNewTaskAndRenderAllTasks() {
 function changeTaskAndRenderAllTasks(input, task) {
   if (input.value && !checkForSpace(input.value)) {
     changeTaskText(task.id, input.value, allTasks);
-    renderAllTask(allTasks);
+    renderAllTask(allTasks, listOfTasks);
   } else if (!input.value) {
     alert('Введите текст задачи');
   }
