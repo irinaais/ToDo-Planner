@@ -108,7 +108,7 @@ function renderAllTask(allTasks, listOfTasks) {
   }
 }
 
-function saveAllTaskInLocalStorage() {
+function saveAllTaskInLocalStorage(allTasks) {
   localStorage.setItem('allTasks', JSON.stringify(allTasks));
 }
 
@@ -148,7 +148,7 @@ function findTaskById(tasks, id) {
 function changeTaskStatus(id, status, tasks) {
   const task = findTaskById(tasks, id);
   task.isDone = !task.isDone;
-  saveAllTaskInLocalStorage();
+  saveAllTaskInLocalStorage(allTasks);
 }
 
 function changeTask(p, li, editButton, deleteButton) {
@@ -182,20 +182,20 @@ function addEnterEventListener() {
 function changeTaskText(id, text, tasks) {
   const task = findTaskById(tasks, id);
   task.inputValue = text;
-  saveAllTaskInLocalStorage();
+  saveAllTaskInLocalStorage(allTasks);
 }
 
 function deleteTask(id, tasks) {
   allTasks = tasks.filter(function (task) {
     return task.id !== id;
   });
-  saveAllTaskInLocalStorage();
+  saveAllTaskInLocalStorage(allTasks);
 }
 
 function addNewTaskAndRenderAllTasks() {
   if (newTaskInput.value && !checkForSpace(newTaskInput.value)) {
     addNewTask(newTaskInput.value);
-    saveAllTaskInLocalStorage();
+    saveAllTaskInLocalStorage(allTasks);
     deleteInputValue();
     renderAllTask(allTasks, listOfTasks);
     newTaskInput.focus();
