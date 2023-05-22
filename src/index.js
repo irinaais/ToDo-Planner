@@ -112,18 +112,6 @@ function saveAllTaskInLocalStorage() {
   localStorage.setItem('allTasks', JSON.stringify(allTasks));
 }
 
-function checkForDuplicate(inputValue) {
-  const isDuplicate = allTasks.some(task => {
-    return task.inputValue === inputValue;
-  });
-
-  if (isDuplicate) {
-    alert('Такая задача уже существует');
-  }
-
-  return isDuplicate;
-}
-
 function deleteInputValue() {
   newTaskInput.value = '';
 }
@@ -205,7 +193,7 @@ function deleteTask(id, tasks) {
 }
 
 function addNewTaskAndRenderAllTasks() {
-  if (newTaskInput.value && !checkForDuplicate(newTaskInput.value) && !checkForSpace(newTaskInput.value)) {
+  if (newTaskInput.value && !checkForSpace(newTaskInput.value)) {
     addNewTask(newTaskInput.value);
     saveAllTaskInLocalStorage();
     deleteInputValue();
@@ -217,7 +205,7 @@ function addNewTaskAndRenderAllTasks() {
 }
 
 function changeTaskAndRenderAllTasks(input, task) {
-  if (input.value && !checkForDuplicate(input.value) && !checkForSpace(input.value)) {
+  if (input.value && !checkForSpace(input.value)) {
     changeTaskText(task.id, input.value, allTasks);
     renderAllTask(allTasks);
   } else if (!input.value) {
