@@ -60,7 +60,7 @@ let allTasks;
     } else if (confirmButton) {
       const input = target.previousElementSibling;
       const task = target.parentElement;
-      changeTaskAndRenderAllTasks(input, task);
+      changeTaskAndRenderAllTasks(input, task, allTasks, listOfTasks);
 
     } else if (cancelButton) {
       renderAllTask(allTasks, listOfTasks);
@@ -174,7 +174,7 @@ function addEnterEventListener() {
     if (evt.keyCode === 13) {
       const input = evt.target;
       const task = evt.target.parentElement;
-      changeTaskAndRenderAllTasks(input, task);
+      changeTaskAndRenderAllTasks(input, task, allTasks, listOfTasks);
     }
   });
 }
@@ -205,10 +205,11 @@ function addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks) {
   }
 }
 
-function changeTaskAndRenderAllTasks(input, task) {
+function changeTaskAndRenderAllTasks(input, task, allTasks, listOfTasks) {
   if (input.value && !checkForSpace(input.value)) {
     changeTaskText(task.id, input.value, allTasks);
     renderAllTask(allTasks, listOfTasks);
+
   } else if (!input.value) {
     alert('Введите текст задачи');
   }
