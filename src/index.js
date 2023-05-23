@@ -55,7 +55,7 @@ let allTasks;
       const p = target.previousElementSibling;
       const editButton = target;
       const deleteButton = target.nextElementSibling;
-      checkOpenInputAndChangeTask(p, li, editButton, deleteButton);
+      checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTasks, allTasks);
 
     } else if (confirmButton) {
       const input = target.previousElementSibling;
@@ -75,7 +75,7 @@ let allTasks;
       const li = evt.target.parentElement;
       const editButton = evt.target.nextElementSibling;
       const deleteButton = evt.target.nextElementSibling.nextElementSibling;
-      checkOpenInputAndChangeTask(p, li, editButton, deleteButton);
+      checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTasks, allTasks);
     }
   })
 })();
@@ -215,7 +215,7 @@ function changeTaskAndRenderAllTasks(input, task, allTasks, listOfTasks) {
   }
 }
 
-function checkOpenInputAndChangeTask(p, li, editButton, deleteButton) {
+function checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTasks, allTasks) {
   const input = listOfTasks.querySelector('.list__task-input');
 
   if (input) {
