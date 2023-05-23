@@ -179,8 +179,8 @@ function addEnterEventListener() {
   });
 }
 
-function changeTaskText(id, text, tasks) {
-  const task = findTaskById(tasks, id);
+function changeTaskText(id, text, allTasks) {
+  const task = findTaskById(allTasks, id);
   task.inputValue = text;
   saveAllTaskInLocalStorage(allTasks);
 }
