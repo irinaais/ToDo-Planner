@@ -22,12 +22,12 @@ let allTasks;
   }
 
   addButton.addEventListener('click', () => {
-    addNewTaskAndRenderAllTasks();
+    addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks);
   });
 
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    addNewTaskAndRenderAllTasks();
+    addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks);
   });
 
   listOfTasks.addEventListener('click', (evt) => {
@@ -185,20 +185,21 @@ function changeTaskText(id, text, allTasks) {
   saveAllTaskInLocalStorage(allTasks);
 }
 
-function deleteTask(id, tasks) {
+function deleteTask(id, tasks) { //TODO
   allTasks = tasks.filter(function (task) {
     return task.id !== id;
   });
   saveAllTaskInLocalStorage(allTasks);
 }
 
-function addNewTaskAndRenderAllTasks() {
+function addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks) {
   if (newTaskInput.value && !checkForSpace(newTaskInput.value)) {
     addNewTask(newTaskInput.value);
     saveAllTaskInLocalStorage(allTasks);
     deleteInputValue(newTaskInput);
     renderAllTask(allTasks, listOfTasks);
     newTaskInput.focus();
+
   } else if (!newTaskInput.value) {
     alert('Введите текст задачи');
   }
