@@ -112,7 +112,7 @@ function saveAllTaskInLocalStorage(allTasks) {
   localStorage.setItem('allTasks', JSON.stringify(allTasks));
 }
 
-function deleteInputValue() {
+function deleteInputValue(newTaskInput) {
   newTaskInput.value = '';
 }
 
@@ -196,7 +196,7 @@ function addNewTaskAndRenderAllTasks() {
   if (newTaskInput.value && !checkForSpace(newTaskInput.value)) {
     addNewTask(newTaskInput.value);
     saveAllTaskInLocalStorage(allTasks);
-    deleteInputValue();
+    deleteInputValue(newTaskInput);
     renderAllTask(allTasks, listOfTasks);
     newTaskInput.focus();
   } else if (!newTaskInput.value) {
