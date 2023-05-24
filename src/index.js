@@ -2,12 +2,11 @@ import './style.css';
 
 let addButton; //TODO нужно ли удалить тут объявление переменных, если сделать все функции чистыми
 let newTaskInput;
-let listOfTasks;
 
 (async () => {
   addButton = document.querySelector('.button_variant_add');
   newTaskInput = document.querySelector('.form__text');
-  listOfTasks = document.querySelector('.list');
+  const listOfTasks = document.querySelector('.list');
   const form = document.querySelector('.form');
   const template = document.querySelector('#template');
 
@@ -167,7 +166,7 @@ function changeTask(p, li, editButton, deleteButton) {
   li.classList.add('list__task_active');
 }
 
-function addEnterEventListener(allTasks, template) {
+function addEnterEventListener(allTasks, listOfTasks, template) {
   const taskInput = document.querySelector('.list__task-input');
   taskInput.addEventListener('keyup', (evt) => {
     if (evt.keyCode === 13) {
@@ -233,10 +232,10 @@ function checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTask
     cancelButtonOfInput.classList.remove('button_visible');
     liOfInput.classList.remove('list__task_active');
     changeTask(p, li, editButton, deleteButton);
-    addEnterEventListener(allTasks, template);
+    addEnterEventListener(allTasks, listOfTasks, template);
 
   } else {
     changeTask(p, li, editButton, deleteButton);
-    addEnterEventListener(allTasks, template);
+    addEnterEventListener(allTasks, listOfTasks, template);
   }
 }
