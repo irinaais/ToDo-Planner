@@ -5,7 +5,6 @@ let newTaskInput;
 let listOfTasks;
 let form;
 let template;
-let allTasks;
 
 (async () => {
   addButton = document.querySelector('.button_variant_add');
@@ -14,7 +13,7 @@ let allTasks;
   form = document.querySelector('.form');
   template = document.querySelector('#template');
 
-  allTasks = [];
+  let allTasks = [];
 
   allTasks = await readTasks(allTasks);
   if (allTasks.length > 0) {
@@ -131,7 +130,7 @@ function checkForSpace(string) {
   }
 }
 
-function addNewTask(inputValue) {
+function addNewTask(inputValue, allTasks) {
   const id = uuidv4();
   const task = {
     id,
@@ -147,8 +146,8 @@ function findTaskById(tasks, id) {
   });
 }
 
-function changeTaskStatus(id, status, tasks) {
-  const task = findTaskById(tasks, id);
+function changeTaskStatus(id, status, allTasks) {
+  const task = findTaskById(allTasks, id);
   task.isDone = !task.isDone;
   saveAllTaskInLocalStorage(allTasks);
 }
@@ -170,7 +169,7 @@ function changeTask(p, li, editButton, deleteButton) {
   li.classList.add('list__task_active');
 }
 
-function addEnterEventListener() {
+function addEnterEventListener(allTasks) {
   const taskInput = document.querySelector('.list__task-input');
   taskInput.addEventListener('keyup', (evt) => {
     if (evt.keyCode === 13) {
@@ -195,7 +194,7 @@ function deleteTask(id, allTasks) {
 
 function addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks) {
   if (newTaskInput.value && !checkForSpace(newTaskInput.value)) {
-    addNewTask(newTaskInput.value);
+    addNewTask(newTaskInput.value, allTasks);
     saveAllTaskInLocalStorage(allTasks);
     deleteInputValue(newTaskInput);
     renderAllTask(allTasks, listOfTasks);
@@ -236,10 +235,10 @@ function checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTask
     cancelButtonOfInput.classList.remove('button_visible');
     liOfInput.classList.remove('list__task_active');
     changeTask(p, li, editButton, deleteButton);
-    addEnterEventListener();
+    addEnterEventListener(allTasks);
 
   } else {
     changeTask(p, li, editButton, deleteButton);
-    addEnterEventListener();
+    addEnterEventListener(allTasks);
   }
 }
