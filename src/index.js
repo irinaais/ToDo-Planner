@@ -47,8 +47,10 @@ let allTasks;
 
     } else if (deleteButton) {
       const task = target.parentElement;
-      deleteTask(task.id, allTasks);
-      renderAllTask(allTasks, listOfTasks);
+      let filteredTasks = deleteTask(task.id, allTasks);
+      allTasks = filteredTasks;
+      saveAllTaskInLocalStorage(filteredTasks);
+      renderAllTask(filteredTasks, listOfTasks);
 
     } else if (editButton) {
       const li = target.parentElement;
@@ -185,11 +187,10 @@ function changeTaskText(id, text, allTasks) {
   saveAllTaskInLocalStorage(allTasks);
 }
 
-function deleteTask(id, tasks) { //TODO
-  allTasks = tasks.filter(function (task) {
+function deleteTask(id, allTasks) {
+  return allTasks.filter(function (task) {
     return task.id !== id;
   });
-  saveAllTaskInLocalStorage(allTasks);
 }
 
 function addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks) {
