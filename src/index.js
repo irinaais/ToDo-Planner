@@ -4,29 +4,28 @@ let addButton; //TODO нужно ли удалить тут объявление
 let newTaskInput;
 let listOfTasks;
 let form;
-let template;
 
 (async () => {
   addButton = document.querySelector('.button_variant_add');
   newTaskInput = document.querySelector('.form__text');
   listOfTasks = document.querySelector('.list');
   form = document.querySelector('.form');
-  template = document.querySelector('#template');
+  const template = document.querySelector('#template');
 
   let allTasks = [];
 
   allTasks = await readTasks(allTasks);
   if (allTasks.length > 0) {
-    renderAllTask(allTasks, listOfTasks);
+    renderAllTask(allTasks, listOfTasks, template);
   }
 
   addButton.addEventListener('click', () => {
-    addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks);
+    addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks, template);
   });
 
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks);
+    addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks, template);
   });
 
   listOfTasks.addEventListener('click', (evt) => {
@@ -42,29 +41,29 @@ let template;
       const isInputChecked = !target.previousElementSibling.checked;
       const task = target.parentElement.parentElement;
       changeTaskStatus(task.id, isInputChecked, allTasks)
-      renderAllTask(allTasks, listOfTasks);
+      renderAllTask(allTasks, listOfTasks, template);
 
     } else if (deleteButton) {
       const task = target.parentElement;
       let filteredTasks = deleteTask(task.id, allTasks);
       allTasks = filteredTasks;
       saveAllTaskInLocalStorage(filteredTasks);
-      renderAllTask(filteredTasks, listOfTasks);
+      renderAllTask(filteredTasks, listOfTasks, template);
 
     } else if (editButton) {
       const li = target.parentElement;
       const p = target.previousElementSibling;
       const editButton = target;
       const deleteButton = target.nextElementSibling;
-      checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTasks, allTasks);
+      checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTasks, allTasks, template);
 
     } else if (confirmButton) {
       const input = target.previousElementSibling;
       const task = target.parentElement;
-      changeTaskAndRenderAllTasks(input, task, allTasks, listOfTasks);
+      changeTaskAndRenderAllTasks(input, task, allTasks, listOfTasks, template);
 
     } else if (cancelButton) {
-      renderAllTask(allTasks, listOfTasks);
+      renderAllTask(allTasks, listOfTasks, template);
     }
   });
 
@@ -76,7 +75,7 @@ let template;
       const li = evt.target.parentElement;
       const editButton = evt.target.nextElementSibling;
       const deleteButton = evt.target.nextElementSibling.nextElementSibling;
-      checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTasks, allTasks);
+      checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTasks, allTasks, template);
     }
   })
 })();
@@ -96,7 +95,7 @@ async function readTasks(allTasks) {
   return [];
 }
 
-function renderAllTask(allTasks, listOfTasks) {
+function renderAllTask(allTasks, listOfTasks, template) {
   listOfTasks.innerHTML = '';
   for (const task of allTasks) {
     const templateItem = template.content.cloneNode(true);
@@ -169,13 +168,13 @@ function changeTask(p, li, editButton, deleteButton) {
   li.classList.add('list__task_active');
 }
 
-function addEnterEventListener(allTasks) {
+function addEnterEventListener(allTasks, template) {
   const taskInput = document.querySelector('.list__task-input');
   taskInput.addEventListener('keyup', (evt) => {
     if (evt.keyCode === 13) {
       const input = evt.target;
       const task = evt.target.parentElement;
-      changeTaskAndRenderAllTasks(input, task, allTasks, listOfTasks);
+      changeTaskAndRenderAllTasks(input, task, allTasks, listOfTasks, template);
     }
   });
 }
@@ -192,12 +191,12 @@ function deleteTask(id, allTasks) {
   });
 }
 
-function addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks) {
+function addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks, template) {
   if (newTaskInput.value && !checkForSpace(newTaskInput.value)) {
     addNewTask(newTaskInput.value, allTasks);
     saveAllTaskInLocalStorage(allTasks);
     deleteInputValue(newTaskInput);
-    renderAllTask(allTasks, listOfTasks);
+    renderAllTask(allTasks, listOfTasks, template);
     newTaskInput.focus();
 
   } else if (!newTaskInput.value) {
@@ -205,17 +204,17 @@ function addNewTaskAndRenderAllTasks(newTaskInput, allTasks, listOfTasks) {
   }
 }
 
-function changeTaskAndRenderAllTasks(input, task, allTasks, listOfTasks) {
+function changeTaskAndRenderAllTasks(input, task, allTasks, listOfTasks, template) {
   if (input.value && !checkForSpace(input.value)) {
     changeTaskText(task.id, input.value, allTasks);
-    renderAllTask(allTasks, listOfTasks);
+    renderAllTask(allTasks, listOfTasks, template);
 
   } else if (!input.value) {
     alert('Введите текст задачи');
   }
 }
 
-function checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTasks, allTasks) {
+function checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTasks, allTasks, template) {
   const input = listOfTasks.querySelector('.list__task-input');
 
   if (input) {
@@ -235,10 +234,10 @@ function checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTask
     cancelButtonOfInput.classList.remove('button_visible');
     liOfInput.classList.remove('list__task_active');
     changeTask(p, li, editButton, deleteButton);
-    addEnterEventListener(allTasks);
+    addEnterEventListener(allTasks, template);
 
   } else {
     changeTask(p, li, editButton, deleteButton);
-    addEnterEventListener(allTasks);
+    addEnterEventListener(allTasks, template);
   }
 }
