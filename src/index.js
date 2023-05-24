@@ -1,11 +1,10 @@
 import './style.css';
 
 let addButton; //TODO нужно ли удалить тут объявление переменных, если сделать все функции чистыми
-let newTaskInput;
 
 (async () => {
   addButton = document.querySelector('.button_variant_add');
-  newTaskInput = document.querySelector('.form__text');
+  const newTaskInput = document.querySelector('.form__text');
   const listOfTasks = document.querySelector('.list');
   const form = document.querySelector('.form');
   const template = document.querySelector('#template');
