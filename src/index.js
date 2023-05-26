@@ -76,6 +76,10 @@ import './style.css';
 })();
 
 //=================================================================
+function clearLocalStorage() {
+  localStorage.removeItem('allTasks');
+}
+
 async function readTasks(allTasks) {
   try {
     allTasks = localStorage.getItem('allTasks');
@@ -85,7 +89,7 @@ async function readTasks(allTasks) {
 
   } catch (err) {
     console.warn("Не удалось прочитать список задач", err);
-    localStorage.removeItem('allTasks');
+    clearLocalStorage();
   }
   return [];
 }
