@@ -35,7 +35,8 @@ import './style.css';
     if (checkbox) {
       const isInputChecked = !target.previousElementSibling.checked;
       const task = target.parentElement.parentElement;
-      changeTaskStatus(task.id, isInputChecked, allTasks)
+      changeTaskStatus(task.id, isInputChecked, allTasks);
+      saveAllTaskInLocalStorage(allTasks);
       renderAllTask(allTasks, listOfTasks, template);
 
     } else if (deleteButton) {
@@ -147,7 +148,6 @@ function findTaskById(tasks, id) {
 function changeTaskStatus(id, status, allTasks) {
   const task = findTaskById(allTasks, id);
   task.isDone = !task.isDone;
-  saveAllTaskInLocalStorage(allTasks);
 }
 
 function changeTask(p, li, editButton, deleteButton) {
