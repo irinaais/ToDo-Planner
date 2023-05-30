@@ -178,6 +178,15 @@ function addEnterEventListener(allTasks, listOfTasks, template) {
   });
 }
 
+function addEscEventListener(allTasks, listOfTasks, template) {
+  const taskInput = document.querySelector('.list__task-input');
+  taskInput.addEventListener('keyup', (evt) => {
+    if (evt.keyCode === 27) {
+      renderAllTask(allTasks, listOfTasks, template);
+    }
+  });
+}
+
 function changeTaskText(id, text, allTasks) {
   const task = findTaskById(allTasks, id);
   task.inputValue = text;
@@ -234,9 +243,11 @@ function checkOpenInputAndChangeTask(p, li, editButton, deleteButton, listOfTask
     liOfInput.classList.remove('list__task_active');
     changeTask(p, li, editButton, deleteButton);
     addEnterEventListener(allTasks, listOfTasks, template);
+    addEscEventListener(allTasks, listOfTasks, template);
 
   } else {
     changeTask(p, li, editButton, deleteButton);
     addEnterEventListener(allTasks, listOfTasks, template);
+    addEscEventListener(allTasks, listOfTasks, template);
   }
 }
