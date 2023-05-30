@@ -169,7 +169,7 @@ function changeTask(p, li, editButton, deleteButton) {
 
 function addEnterEventListener(allTasks, listOfTasks, template) {
   const taskInput = document.querySelector('.list__task-input');
-  taskInput.addEventListener('keyup', (evt) => {
+  taskInput.addEventListener('keydown', (evt) => {
     if (evt.keyCode === 13) {
       const input = evt.target;
       const task = evt.target.parentElement;
@@ -180,7 +180,7 @@ function addEnterEventListener(allTasks, listOfTasks, template) {
 
 function addEscEventListener(allTasks, listOfTasks, template) {
   const taskInput = document.querySelector('.list__task-input');
-  taskInput.addEventListener('keyup', (evt) => {
+  taskInput.addEventListener('keydown', (evt) => {
     if (evt.keyCode === 27) {
       renderAllTask(allTasks, listOfTasks, template);
     }
